@@ -1,4 +1,4 @@
-package getaguitar.site.demo.entity;
+package getaguitar.site.demo.Entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
