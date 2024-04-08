@@ -8,16 +8,13 @@ import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@MessageMapping("chat")
 @RequiredArgsConstructor
-public class UserController {
-    private final SimpMessageSendingOperations simpleMessageSendingOperations;
+public class ChatController {
 
     @MessageMapping("/message")
-    @SendTo("/channel")
-    public void sendMessage(ChatMessage message) {
-
-        System.out.println(message);
-        //구독중인 client에 메세지를 보낸다.
-        simpleMessageSendingOperations.convertAndSend("/channel", message);
+    @SendTo("/topic/chat/message")
+    public ChatMessage sendMessage(ChatMessage message) {
+        return message;
     }
 }
