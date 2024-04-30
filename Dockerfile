@@ -4,7 +4,7 @@ CMD ["./gradlew", "clean", "build"]
 
 VOLUME /tmp
 
-COPY ./build/libs/*.jar app.jar
+COPY build/libs/*.jar app.jar
 
 EXPOSE 3000
 
