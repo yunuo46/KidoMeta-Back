@@ -6,13 +6,14 @@ import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@MessageMapping("map")
+@MessageMapping("/map")
 @RequiredArgsConstructor
 public class MapController {
 
     @MessageMapping("/move")
     @SendTo("/topic/map/move")
     public void moveUser() {
+        //mapService.move();
     }
 
     @MessageMapping("/new")
