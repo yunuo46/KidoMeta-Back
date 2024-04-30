@@ -1,5 +1,5 @@
 FROM bellsoft/liberica-openjdk-alpine:21
-FROM gradle:8.4-jdk-alpine
+FROM gradle:8.7-jdk-alpine
 
 RUN chmod +x ./gradlew
 CMD ["./gradlew", "clean", "build"]
