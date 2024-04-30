@@ -8,7 +8,7 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 
 @Configuration
 @EnableWebSocketMessageBroker
-public class ChatConfig implements WebSocketMessageBrokerConfigurer {
+public class StompConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
@@ -18,9 +18,8 @@ public class ChatConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
         // send로 시작되는 메시지는 message-handling methods로 라우팅된다.
-        registry.setApplicationDestinationPrefixes("/send");
+        registry.setApplicationDestinationPrefixes("/app");
 
-        // channel로 시작되는 요청을 구독한 모든 사용자들에게 메시지를 broadcast한다.
-        registry.enableSimpleBroker("/channel");
+        //registry.enableSimpleBroker("/topic");
     }
 }
