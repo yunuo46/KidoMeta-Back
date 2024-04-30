@@ -26,7 +26,7 @@ jobs:
           java-version: '21'
 
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v3
+        uses: gradle/actions/setup-gradle@v3
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
@@ -44,7 +44,6 @@ jobs:
       - name: docker Build and Push
         uses: docker/build-push-action@v5
         with:
-          context: .
           push: true
           tags: ghcr.io/yunuo46/getaguitar:latest
 
