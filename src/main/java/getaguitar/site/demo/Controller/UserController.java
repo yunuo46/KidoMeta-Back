@@ -15,8 +15,7 @@ public class UserController {
     @MessageMapping("/message")
     @SendTo("/channel")
     public void sendMessage(ChatMessage message) {
-
-        System.out.println(message);
+        System.out.println(message.getData());
         //구독중인 client에 메세지를 보낸다.
         simpleMessageSendingOperations.convertAndSend("/channel", message);
     }
