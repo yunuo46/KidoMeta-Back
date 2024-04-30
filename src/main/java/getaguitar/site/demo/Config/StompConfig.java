@@ -20,6 +20,6 @@ public class StompConfig implements WebSocketMessageBrokerConfigurer {
         // send로 시작되는 메시지는 message-handling methods로 라우팅된다.
         registry.setApplicationDestinationPrefixes("/app");
 
-        // registry.enableSimpleBroker("/topic");
+        //registry.enableSimpleBroker("/topic");
     }
 }
