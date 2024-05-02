@@ -1,8 +1,7 @@
 FROM bellsoft/liberica-openjdk-alpine:21
-FROM gradle:8.4-jdk-alpine
 
-COPY build/libs/*.jar app.jar
+COPY ./build/libs/*.jar ./app.jar
 
 EXPOSE 3000
 
-ENTRYPOINT ["java","-jar","/app.jar"]
+ENTRYPOINT ["java","-jar","./app.jar"]
