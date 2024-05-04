@@ -15,7 +15,7 @@ jobs:
 
       - name : Setup Environment
         run : |
-          echo "${{ secrets.APPLICATION }}" >> ./src/main/resources/application.properties
+          echo -e "\n${{ secrets.APPLICATION }}" >> ./src/main/resources/application.properties
           cat ./src/main/resources/application.properties
 
       - name: Setup JDK 21
