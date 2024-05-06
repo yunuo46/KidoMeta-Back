@@ -1,15 +1,15 @@
-package getaguitar.site.demo.Model;
+package getaguitar.site.demo.Dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-public class ChatMessage {
+public class ResChatMessageDto {
     private String text;
     private String username;
 }

@@ -1,7 +1,7 @@
 package getaguitar.site.demo.Service;
 
-import getaguitar.site.demo.Dto.UserDto;
+import getaguitar.site.demo.Dto.ResUserNameDto;
 
 public interface APIService {
-    UserDto getUser(String username);
+    ResUserNameDto getUser(String username);
 }
