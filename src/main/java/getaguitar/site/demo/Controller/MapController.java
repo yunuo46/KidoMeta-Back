@@ -2,6 +2,8 @@ package getaguitar.site.demo.Controller;
 
 import getaguitar.site.demo.Dto.ReqNewUserDto;
 import getaguitar.site.demo.Dto.ResNewUserDto;
+import getaguitar.site.demo.Dto.ResStopUserDto;
+import getaguitar.site.demo.Dto.ReqStopUserDto;
 import getaguitar.site.demo.Service.MapService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -31,6 +33,8 @@ public class MapController {
 
     @MessageMapping("/stop")
     @SendTo("/topic/map/stop")
-    public void stopUser() {
+    public ResStopUserDto stopUser(ReqStopUserDto stopUser) {
+        ResStopUserDto resStopUserDto= mapService.stopUser(stopUser);
+        return resStopUserDto;
     }
 }
