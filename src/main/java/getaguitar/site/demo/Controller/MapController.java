@@ -1,6 +1,7 @@
 package getaguitar.site.demo.Controller;
 
 import getaguitar.site.demo.Dto.ReqNewUserDto;
+import getaguitar.site.demo.Dto.ResMoveUserDto;
 import getaguitar.site.demo.Dto.ResNewUserDto;
 import getaguitar.site.demo.Service.MapService;
 import lombok.RequiredArgsConstructor;
@@ -18,8 +19,9 @@ public class MapController {
 
     @MessageMapping("/move")
     @SendTo("/topic/map/move")
-    public void moveUser() {
-        //mapService.move();
+    public ResMoveUserDto moveUser(String direction) {
+        ResMoveUserDto resMoveUserDto = mapService.moveUser(direction);
+        return resMoveUserDto;
     }
 
     @MessageMapping("/new")
