@@ -1,4 +1,4 @@
-package getaguitar.site.demo.Dto;
+package getaguitar.site.demo.Dto.MoveUser;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,6 +9,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ReqStopUserDto {
+public class ResMoveUserDto {
     private String username;
+    private int x;
+    private int y;
+    private String direction;
 }

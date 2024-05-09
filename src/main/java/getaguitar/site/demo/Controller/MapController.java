@@ -1,9 +1,8 @@
 package getaguitar.site.demo.Controller;
 
-
-import getaguitar.site.demo.Dto.ResMoveUserDto;
-import getaguitar.site.demo.Dto.ResStopUserDto;
-import getaguitar.site.demo.Dto.ReqStopUserDto;
+import getaguitar.site.demo.Dto.MoveUser.ResMoveUserDto;
+import getaguitar.site.demo.Dto.StopUser.ResStopUserDto;
+import getaguitar.site.demo.Dto.StopUser.ReqStopUserDto;
 import getaguitar.site.demo.Dto.Player;
 import getaguitar.site.demo.Dto.NewUser.ReqNewUserDto;
 import getaguitar.site.demo.Dto.NewUser.ResNewUserDto;
@@ -40,7 +39,7 @@ public class MapController {
     @SendTo("/topic/map/all")
     public Player[] allUser(){
         Player[] players = new Player[1];
-        players[0] = new Player("TestId", 0, 0, "down");
+        players[0] = new Player("TestName", 0, 0, "down");
         return players;
     }
 

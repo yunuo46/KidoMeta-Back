@@ -6,25 +6,27 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+import org.antlr.v4.runtime.misc.NotNull;
 
 @ToString
 @Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "tbl_test_entity")
+@Table(name = "user")
 @Entity
-public class TestEntity {
+public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
-    @Column(length = 200, nullable = false)
-    private String name;
+    @Column(length = 45)
+    private String username;
+
+    @NotNull
+    private Integer x;
+
+    @NotNull
+    private Integer y;
 }
