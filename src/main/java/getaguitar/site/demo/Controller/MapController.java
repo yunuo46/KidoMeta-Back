@@ -1,5 +1,7 @@
 package getaguitar.site.demo.Controller;
 
+
+import getaguitar.site.demo.Dto.ResMoveUserDto;
 import getaguitar.site.demo.Dto.ResStopUserDto;
 import getaguitar.site.demo.Dto.ReqStopUserDto;
 import getaguitar.site.demo.Dto.Player;
@@ -22,8 +24,9 @@ public class MapController {
 
     @MessageMapping("/move")
     @SendTo("/topic/map/move")
-    public void moveUser() {
-        //mapService.move();
+    public ResMoveUserDto moveUser(String direction) {
+        ResMoveUserDto resMoveUserDto = mapService.moveUser(direction);
+        return resMoveUserDto;
     }
 
     @MessageMapping("/new")
