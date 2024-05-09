@@ -1,7 +1,8 @@
 package getaguitar.site.demo.Controller;
 
-import getaguitar.site.demo.Dto.ReqNewUserDto;
-import getaguitar.site.demo.Dto.ResNewUserDto;
+import getaguitar.site.demo.Dto.Player;
+import getaguitar.site.demo.Dto.NewUser.ReqNewUserDto;
+import getaguitar.site.demo.Dto.NewUser.ResNewUserDto;
 import getaguitar.site.demo.Service.MapService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -27,6 +28,14 @@ public class MapController {
     public ResNewUserDto newUser(@Payload ReqNewUserDto newUser) {
         ResNewUserDto resNewUserDto = mapService.createUser(newUser);
         return resNewUserDto;
+    }
+
+    @MessageMapping("/all")
+    @SendTo("/topic/map/all")
+    public Player[] allUser(){
+        Player[] players = new Player[1];
+        players[0] = new Player("TestId", 0, 0, "down");
+        return players;
     }
 
     @MessageMapping("/stop")

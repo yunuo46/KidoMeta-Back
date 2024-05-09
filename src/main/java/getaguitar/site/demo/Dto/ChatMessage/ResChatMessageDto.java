@@ -1,4 +1,4 @@
-package getaguitar.site.demo.Dto;
+package getaguitar.site.demo.Dto.ChatMessage;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,9 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ResNewUserDto {
-    private String id;
-    private int x;
-    private int y;
-    private String direction;
+public class ResChatMessageDto {
+    private String text;
+    private String username;
 }
