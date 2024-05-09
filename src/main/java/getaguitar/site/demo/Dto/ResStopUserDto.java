@@ -9,9 +9,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ResNewUserDto {
+public class ResStopUserDto {
     private String id;
     private int x;
     private int y;
-    private String direction;
 }

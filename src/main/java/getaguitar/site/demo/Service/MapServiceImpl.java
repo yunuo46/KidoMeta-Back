@@ -1,7 +1,9 @@
 package getaguitar.site.demo.Service;
-import getaguitar.site.demo.Dto.ReqNewUserDto;
-import getaguitar.site.demo.Dto.ResMoveUserDto;
-import getaguitar.site.demo.Dto.ResNewUserDto;
+import getaguitar.site.demo.Dto.ReqStopUserDto;
+import getaguitar.site.demo.Dto.ResStopUserDto;
+import getaguitar.site.demo.Dto.NewUser.ReqNewUserDto;
+import getaguitar.site.demo.Dto.NewUser.ResNewUserDto;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,4 +20,9 @@ public class MapServiceImpl implements MapService {
         return moveUserDto;
     }
 
+    @Override
+    public ResStopUserDto stopUser(ReqStopUserDto stopUser){
+        ResStopUserDto resStopUserDto = new ResStopUserDto("testId", 0, 0);
+        return resStopUserDto;
+    }
 }

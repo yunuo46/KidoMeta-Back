@@ -1,5 +1,6 @@
-package getaguitar.site.demo.Dto;
+package getaguitar.site.demo.Dto.NewUser;
 
+import getaguitar.site.demo.Dto.IPosition;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
