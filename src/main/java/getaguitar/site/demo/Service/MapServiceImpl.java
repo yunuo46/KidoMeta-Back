@@ -7,6 +7,7 @@ import getaguitar.site.demo.Dto.NewUser.ResNewUserDto;
 
 import getaguitar.site.demo.Entity.UserEntity;
 import getaguitar.site.demo.Repository.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,8 +29,7 @@ public class MapServiceImpl implements MapService {
                 .y(300)
                 .direction("down")
                 .build()).getUsername();
-        ResNewUserDto resNewUserDto = new ResNewUserDto(username,400,300,"down");
-        return resNewUserDto;
+        return new ResNewUserDto(username,400,300,"down");
     }
 
     @Override
@@ -38,6 +38,7 @@ public class MapServiceImpl implements MapService {
     }
 
     @Override
+    @Transactional
     public MoveUserDto moveUser(MoveUserDto position) {
         String username = position.getUsername();
         UserEntity user = userRepository.findByUsername(username);
@@ -46,21 +47,12 @@ public class MapServiceImpl implements MapService {
         int y = position.getY();
         String direction = position.getDirection();
 
-        if(direction.equals("up")) y-=2;
-        else if(direction.equals("down")) y+=2;
-        else if(direction.equals("left")) x-=2;
-        else if(direction.equals("right")) x+=2;
+        if(direction.equals("up")) { y-=2; user.setY(y); }
+        else if(direction.equals("down")) { y+=2; user.setY(y); }
+        else if(direction.equals("left")) { x-=2; user.setX(x); }
+        else if(direction.equals("right")) { x+=2; user.setX(x); }
 
-        userRepository.save(UserEntity.builder()
-                        .id(user.getId())
-                        .username(username)
-                        .x(x)
-                        .y(y)
-                        .direction(direction)
-                        .build());
-
-        MoveUserDto moveUserDto = new MoveUserDto(username, x, y, direction);
-        return moveUserDto;
+        return new MoveUserDto(username, x, y, direction);
     }
 
     @Override

@@ -26,15 +26,13 @@ public class MapController {
     @MessageMapping("/move")
     @SendTo("/topic/map/move")
     public MoveUserDto moveUser(MoveUserDto position) {
-        MoveUserDto moveUserDto = mapService.moveUser(position);
-        return moveUserDto;
+        return mapService.moveUser(position);
     }
 
     @MessageMapping("/new")
     @SendTo("/topic/map/new")
     public ResNewUserDto newUser(@Payload ReqNewUserDto newUser) {
-        ResNewUserDto resNewUserDto = mapService.createUser(newUser);
-        return resNewUserDto;
+        return mapService.createUser(newUser);
     }
 
     @MessageMapping("/all")
@@ -46,7 +44,6 @@ public class MapController {
     @MessageMapping("/stop")
     @SendTo("/topic/map/stop")
     public ResStopUserDto stopUser(ReqStopUserDto stopUser) {
-        ResStopUserDto resStopUserDto= mapService.stopUser(stopUser);
-        return resStopUserDto;
+        return mapService.stopUser(stopUser);
     }
 }

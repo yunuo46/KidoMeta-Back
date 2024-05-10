@@ -6,6 +6,7 @@ import org.antlr.v4.runtime.misc.NotNull;
 
 @ToString
 @Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,10 +20,8 @@ public class UserEntity {
     @Column(length = 45)
     private String username;
 
-    @NotNull
     private Integer x;
 
-    @NotNull
     private Integer y;
 
     private String direction;

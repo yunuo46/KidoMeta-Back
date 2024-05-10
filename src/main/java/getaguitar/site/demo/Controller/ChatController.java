@@ -16,7 +16,6 @@ public class ChatController {
     @MessageMapping("/message")
     @SendTo("/topic/chat/message")
     public ResChatMessageDto sendMessage(@Payload ReqChatMessageDto message) {
-        ResChatMessageDto resChatMessageDto = new ResChatMessageDto(message.getText(), message.getUsername());
-        return resChatMessageDto;
+        return new ResChatMessageDto(message.getText(), message.getUsername());
     }
 }

@@ -8,7 +8,6 @@ public class APIServiceImpl implements APIService{
     @Override
     public ResUserNameDto getUser(){
         String username = RandomStringUtils.randomAlphanumeric(5);
-        ResUserNameDto userDto = new ResUserNameDto(username);
-        return userDto;
+        return new ResUserNameDto(username);
     }
 }
