@@ -28,6 +28,8 @@ public class StompHandler implements ChannelInterceptor {
             case DISCONNECT:
                 LOGGER.info("sessionId Disconnected {}", sessionId);
                 break;
+            case null:
+                break;
             default:
                 break;
         }
