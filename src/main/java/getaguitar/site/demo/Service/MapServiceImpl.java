@@ -46,19 +46,19 @@ public class MapServiceImpl implements MapService {
 
         switch (direction) {
             case "up" -> {
-                y -= 2;
+                y -= 6;
                 user.setY(y);
             }
             case "down" -> {
-                y += 2;
+                y += 6;
                 user.setY(y);
             }
             case "left" -> {
-                x -= 2;
+                x -= 6;
                 user.setX(x);
             }
             case "right" -> {
-                x += 2;
+                x += 6;
                 user.setX(x);
             }
         }
