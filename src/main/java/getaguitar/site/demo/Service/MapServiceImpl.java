@@ -22,15 +22,9 @@ public class MapServiceImpl implements MapService {
     }
 
     @Override
-    public ResNewUserDto createUser(ReqNewUserDto newUser){
-        String username = newUser.getUsername();
-        int id = userRepository.save(UserEntity.builder()
-                .username(username)
-                .x(400)
-                .y(300)
-                .direction("down")
-                .build()).getId();
-        return new ResNewUserDto(id, username,400,300,"down");
+    public UserEntity createUser(ReqNewUserDto newUser){
+        int id = newUser.getId();
+        return userRepository.findById(id).orElseThrow();
     }
 
     @Override
@@ -43,7 +37,6 @@ public class MapServiceImpl implements MapService {
     public MoveUserDto moveUser(MoveUserDto userInfo) {
         System.out.println("move");
         int id = userInfo.getId();
-        System.out.println(id);
         UserEntity user = userRepository.findById(id).orElseThrow();
 
         String username = userInfo.getUsername();

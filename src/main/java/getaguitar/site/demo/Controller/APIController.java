@@ -1,6 +1,6 @@
 package getaguitar.site.demo.Controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import getaguitar.site.demo.Dto.ResUserNameDto;
+import getaguitar.site.demo.Dto.ResUserDto;
 import getaguitar.site.demo.Service.APIService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,7 +17,7 @@ public class APIController {
 
     @GetMapping("/user")
     @CrossOrigin(origins = "*", allowedHeaders = "*")
-    public ResUserNameDto getUser() throws JsonProcessingException {
+    public ResUserDto getUser() throws JsonProcessingException {
         return apiService.getUser();
     }
 }

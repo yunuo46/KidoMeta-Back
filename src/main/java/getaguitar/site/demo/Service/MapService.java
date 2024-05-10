@@ -10,7 +10,7 @@ import getaguitar.site.demo.Entity.UserEntity;
 import java.util.List;
 
 public interface MapService {
-    ResNewUserDto createUser(ReqNewUserDto newUser);
+    UserEntity createUser(ReqNewUserDto newUser);
     ResStopUserDto stopUser(ReqStopUserDto stopUser);
     MoveUserDto moveUser(MoveUserDto moveUser);
     List<UserEntity> getAllUser();

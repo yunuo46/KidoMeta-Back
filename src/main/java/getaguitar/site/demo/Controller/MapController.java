@@ -4,7 +4,6 @@ import getaguitar.site.demo.Dto.MoveUser.MoveUserDto;
 import getaguitar.site.demo.Dto.StopUser.ResStopUserDto;
 import getaguitar.site.demo.Dto.StopUser.ReqStopUserDto;
 import getaguitar.site.demo.Dto.NewUser.ReqNewUserDto;
-import getaguitar.site.demo.Dto.NewUser.ResNewUserDto;
 import getaguitar.site.demo.Entity.UserEntity;
 import getaguitar.site.demo.Service.MapService;
 
@@ -31,7 +30,7 @@ public class MapController {
 
     @MessageMapping("/new")
     @SendTo("/topic/map/new")
-    public ResNewUserDto newUser(@Payload ReqNewUserDto newUser) {
+    public UserEntity newUser(@Payload ReqNewUserDto newUser) {
         return mapService.createUser(newUser);
     }
 
