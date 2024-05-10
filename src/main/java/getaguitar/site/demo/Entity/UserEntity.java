@@ -10,7 +10,7 @@ import org.antlr.v4.runtime.misc.NotNull;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "user", indexes = @Index(columnList = "username"))
+@Table(name = "user")
 @Entity
 public class UserEntity {
     @Id

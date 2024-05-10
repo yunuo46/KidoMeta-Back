@@ -10,6 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ResNewUserDto {
+    private int id;
     private String username;
     private int x;
     private int y;

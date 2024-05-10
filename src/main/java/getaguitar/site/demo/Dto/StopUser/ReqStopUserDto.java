@@ -10,5 +10,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ReqStopUserDto {
+    private int id;
     private String username;
 }
