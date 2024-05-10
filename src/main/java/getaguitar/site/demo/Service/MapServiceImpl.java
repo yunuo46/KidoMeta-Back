@@ -40,6 +40,7 @@ public class MapServiceImpl implements MapService {
     @Override
     public String removeUser(String sessionId) {
         String username = userRepository.findBySessionId(sessionId).getUsername();
+        userRepository.delete(userRepository.findBySessionId(sessionId));
         return username;
     }
 
