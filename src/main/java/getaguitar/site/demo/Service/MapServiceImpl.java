@@ -43,18 +43,32 @@ public class MapServiceImpl implements MapService {
     public MoveUserDto moveUser(MoveUserDto userInfo) {
         System.out.println("move");
         int id = userInfo.getId();
-        UserEntity user= userRepository.findById(id).orElseThrow();
+        System.out.println(id);
+        UserEntity user = userRepository.findById(id).orElseThrow();
 
         String username = userInfo.getUsername();
         int x = userInfo.getX();
         int y = userInfo.getY();
         String direction = userInfo.getDirection();
 
-        if(direction.equals("up")) { y-=2; user.setY(y); }
-        else if(direction.equals("down")) { y+=2; user.setY(y); }
-        else if(direction.equals("left")) { x-=2; user.setX(x); }
-        else if(direction.equals("right")) { x+=2; user.setX(x); }
-
+        switch (direction) {
+            case "up" -> {
+                y -= 2;
+                user.setY(y);
+            }
+            case "down" -> {
+                y += 2;
+                user.setY(y);
+            }
+            case "left" -> {
+                x -= 2;
+                user.setX(x);
+            }
+            case "right" -> {
+                x += 2;
+                user.setX(x);
+            }
+        }
         return new MoveUserDto(id, username, x, y, direction);
     }
 
