@@ -1,11 +1,6 @@
 package getaguitar.site.demo.Entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
@@ -14,7 +9,7 @@ import org.antlr.v4.runtime.misc.NotNull;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "user")
+@Table(name = "user", indexes = @Index(columnList = "username"))
 @Entity
 public class UserEntity {
     @Id
