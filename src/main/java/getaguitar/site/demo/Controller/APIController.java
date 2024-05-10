@@ -18,7 +18,7 @@ public class APIController {
     @GetMapping("/user")
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     public ResUserNameDto getUser() throws JsonProcessingException {
-        ResUserNameDto userDto = apiService.getUser("TestName");
+        ResUserNameDto userDto = apiService.getUser();
         return userDto;
     }
 }

@@ -11,6 +11,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ReqNewUserDto {
+    private String username;
     private String room;
     private IPosition position;
 }

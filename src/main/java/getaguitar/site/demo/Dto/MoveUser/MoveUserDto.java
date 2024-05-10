@@ -9,7 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ResMoveUserDto {
+public class MoveUserDto {
     private String username;
     private int x;
     private int y;

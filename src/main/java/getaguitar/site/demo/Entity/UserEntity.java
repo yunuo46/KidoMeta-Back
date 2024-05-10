@@ -29,4 +29,6 @@ public class UserEntity {
 
     @NotNull
     private Integer y;
+
+    private String direction;
 }

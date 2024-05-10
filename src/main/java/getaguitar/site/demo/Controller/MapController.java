@@ -1,11 +1,11 @@
 package getaguitar.site.demo.Controller;
 
-import getaguitar.site.demo.Dto.MoveUser.ResMoveUserDto;
+import getaguitar.site.demo.Dto.MoveUser.MoveUserDto;
 import getaguitar.site.demo.Dto.StopUser.ResStopUserDto;
 import getaguitar.site.demo.Dto.StopUser.ReqStopUserDto;
-import getaguitar.site.demo.Dto.Player;
 import getaguitar.site.demo.Dto.NewUser.ReqNewUserDto;
 import getaguitar.site.demo.Dto.NewUser.ResNewUserDto;
+import getaguitar.site.demo.Entity.UserEntity;
 import getaguitar.site.demo.Service.MapService;
 
 import lombok.RequiredArgsConstructor;
@@ -13,6 +13,8 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,9 +25,9 @@ public class MapController {
 
     @MessageMapping("/move")
     @SendTo("/topic/map/move")
-    public ResMoveUserDto moveUser(String direction) {
-        ResMoveUserDto resMoveUserDto = mapService.moveUser(direction);
-        return resMoveUserDto;
+    public MoveUserDto moveUser(MoveUserDto position) {
+        MoveUserDto moveUserDto = mapService.moveUser(position);
+        return moveUserDto;
     }
 
     @MessageMapping("/new")
@@ -37,10 +39,8 @@ public class MapController {
 
     @MessageMapping("/all")
     @SendTo("/topic/map/all")
-    public Player[] allUser(){
-        Player[] players = new Player[1];
-        players[0] = new Player("TestName", 0, 0, "down");
-        return players;
+    public List<UserEntity> allUser(){
+        return mapService.getAllUser();
     }
 
     @MessageMapping("/stop")
