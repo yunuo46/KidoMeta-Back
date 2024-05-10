@@ -7,14 +7,12 @@ import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.messaging.support.ChannelInterceptor;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Component
-@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET})
 public class StompHandler implements ChannelInterceptor {
 
     private static final Logger LOGGER = LoggerFactory.getLogger( StompHandler.class );
+    private final ThreadLocal<String> sessionIdHolder = new ThreadLocal<>();
 
     @Override
     public void postSend(Message message, MessageChannel channel, boolean sent) {
@@ -24,15 +22,16 @@ public class StompHandler implements ChannelInterceptor {
         switch ((accessor.getCommand())) {
             case CONNECT:
                 LOGGER.info("Received a new web socket connection {}", sessionId);
+                sessionIdHolder.set(sessionId);
                 break;
             case DISCONNECT:
                 LOGGER.info("sessionId Disconnected {}", sessionId);
                 break;
-            case null:
-                break;
-            default:
+            case null, default:
                 break;
         }
-
+    }
+    public String getSessionId() {
+        return sessionIdHolder.get();
     }
 }

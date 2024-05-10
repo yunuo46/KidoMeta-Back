@@ -20,6 +20,9 @@ public class UserEntity {
     @Column(length = 45)
     private String username;
 
+    @Column(length = 45)
+    private String sessionId;
+
     private Integer x;
 
     private Integer y;

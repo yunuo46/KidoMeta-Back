@@ -8,4 +8,5 @@ import java.util.List;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Integer> {
+    public UserEntity findBySessionId(String sessionId);
 }

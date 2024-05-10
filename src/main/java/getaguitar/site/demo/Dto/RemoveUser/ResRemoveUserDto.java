@@ -1,6 +1,5 @@
-package getaguitar.site.demo.Dto.NewUser;
+package getaguitar.site.demo.Dto.RemoveUser;
 
-import getaguitar.site.demo.Dto.IPosition;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,8 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ReqNewUserDto {
+public class ResRemoveUserDto {
     private String username;
-    private String room;
-    private IPosition position;
 }
+
