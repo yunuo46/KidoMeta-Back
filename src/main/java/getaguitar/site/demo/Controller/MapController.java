@@ -1,7 +1,6 @@
 package getaguitar.site.demo.Controller;
-
-import getaguitar.site.demo.Dto.MoveUser.MoveUserDto;
-import getaguitar.site.demo.Dto.RemoveUser.ResRemoveUserDto;
+import getaguitar.site.demo.Dto.MoveUser.ReqMoveUserDto;
+import getaguitar.site.demo.Dto.MoveUser.ResMoveUserDto;
 import getaguitar.site.demo.Dto.StopUser.ResStopUserDto;
 import getaguitar.site.demo.Dto.StopUser.ReqStopUserDto;
 import getaguitar.site.demo.Dto.NewUser.ReqNewUserDto;
@@ -9,7 +8,6 @@ import getaguitar.site.demo.Entity.UserEntity;
 import getaguitar.site.demo.Service.MapService;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -21,6 +19,7 @@ import org.springframework.web.socket.messaging.SessionConnectEvent;
 import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -44,7 +43,7 @@ public class MapController {
 
     @MessageMapping("/move")
     @SendTo("/topic/map/move")
-    public MoveUserDto moveUser(MoveUserDto position) {
+    public ResMoveUserDto moveUser(ReqMoveUserDto position) {
         return mapService.moveUser(position);
     }
 
@@ -56,7 +55,7 @@ public class MapController {
 
     @MessageMapping("/all")
     @SendTo("/topic/map/all")
-    public List<UserEntity> allUser(){
+    public List<Optional<UserEntity>> allUser(){
         return mapService.getAllUser();
     }
 

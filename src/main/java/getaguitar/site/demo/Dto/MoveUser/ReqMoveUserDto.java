@@ -9,9 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class MoveUserDto {
+public class ReqMoveUserDto {
     private String username;
-    private int x;
-    private int y;
     private String direction;
 }
