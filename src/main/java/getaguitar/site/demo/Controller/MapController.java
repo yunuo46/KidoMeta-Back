@@ -39,7 +39,6 @@ public class MapController {
 
     @EventListener
     public void handleWebSocketDisconnectListener(SessionDisconnectEvent event) {
-        System.out.println(event.getSessionId());
         messagingTemplate.convertAndSend("/topic/map/remove", mapService.removeUser(sessionId));
     }
 

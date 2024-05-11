@@ -10,7 +10,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class MoveUserDto {
-    private int id;
     private String username;
     private int x;
     private int y;

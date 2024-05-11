@@ -16,6 +16,8 @@ import java.util.List;
 @Service
 public class MapServiceImpl implements MapService {
     private final UserRepository userRepository;
+    private int x;
+    private int y;
 
     public MapServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -23,11 +25,13 @@ public class MapServiceImpl implements MapService {
 
     @Override
     public UserEntity createUser(String sessionId, ReqNewUserDto newUser) {
+        x=400;
+        y=300;
         return userRepository.save(UserEntity.builder()
                 .sessionId(sessionId)
                 .username(newUser.getUsername())
-                .x(400)
-                .y(300)
+                .x(x)
+                .y(y)
                 .direction("down")
                 .build());
     }
@@ -47,41 +51,32 @@ public class MapServiceImpl implements MapService {
     @Override
     @Transactional
     public MoveUserDto moveUser(MoveUserDto userInfo) {
-        int id = userInfo.getId();
-        UserEntity user = userRepository.findById(id).orElseThrow();
-
         String username = userInfo.getUsername();
-        int x = userInfo.getX();
-        int y = userInfo.getY();
         String direction = userInfo.getDirection();
 
         switch (direction) {
             case "up" -> {
                 y -= 4;
-                user.setY(y);
             }
             case "down" -> {
                 y += 4;
-                user.setY(y);
             }
             case "left" -> {
                 x -= 4;
-                user.setX(x);
             }
             case "right" -> {
                 x += 4;
-                user.setX(x);
             }
         }
-        return new MoveUserDto(id, username, x, y, direction);
+        return new MoveUserDto(username, x, y, direction);
     }
 
     @Override
     public ResStopUserDto stopUser(ReqStopUserDto stopUser) {
-        System.out.println("stop");
         String username = stopUser.getUsername();
         int id = stopUser.getId();
-        UserEntity user = userRepository.findById(id).orElseThrow();
-        return new ResStopUserDto(username, user.getX(), user.getY());
+        userRepository.save(UserEntity.builder()
+                .id(id).x(x).y(y).build());
+        return new ResStopUserDto(username, x, y);
     }
 }
