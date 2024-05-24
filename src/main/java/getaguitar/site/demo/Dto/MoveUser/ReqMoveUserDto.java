@@ -12,4 +12,6 @@ import lombok.Setter;
 public class ReqMoveUserDto {
     private String username;
     private String direction;
+    private int x;
+    private int y;
 }

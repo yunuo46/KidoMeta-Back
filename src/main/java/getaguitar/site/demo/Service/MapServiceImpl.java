@@ -81,28 +81,16 @@ public class MapServiceImpl implements MapService {
         String username = userInfo.getUsername();
         String direction = userInfo.getDirection();
         MemoryUserEntity user = memoryUserRepository.findByUsername(username).orElseThrow();
-        int x = user.getX();
-        int y = user.getY();
 
         switch (direction) {
-            case "up" -> {
-                y-=4;
-                memoryUserRepository.updateY(username, y);
+            case "up", "down" -> {
+                user.setY(userInfo.getY());
             }
-            case "down" -> {
-                y+=4;
-                memoryUserRepository.updateY(username, y);
-            }
-            case "left" -> {
-                x-=4;
-                memoryUserRepository.updateX(username, x);
-            }
-            case "right" -> {
-                x+=4;
-                memoryUserRepository.updateX(username, x);
+            case "left", "right" -> {
+                user.setX(userInfo.getX());
             }
         }
-        return new ResMoveUserDto(username, x, y, direction);
+        return new ResMoveUserDto(username, user.getX(), user.getY(), direction);
     }
 
     @Override
