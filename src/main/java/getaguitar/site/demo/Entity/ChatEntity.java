@@ -3,25 +3,18 @@ package getaguitar.site.demo.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-@ToString
 @Getter
 @Setter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "user")
+@Table(name = "chat")
 @Entity
-public class UserEntity {
+public class ChatEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(length = 45)
+    private String text;
+
     private String username;
-
-    private Integer x;
-
-    private Integer y;
-
-    private String direction;
 }
