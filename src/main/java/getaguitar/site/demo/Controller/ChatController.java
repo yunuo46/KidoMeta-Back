@@ -9,6 +9,9 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -33,8 +36,8 @@ public class ChatController {
     @SendTo("/topic/chat/messages")
     public ResChatMessageDto[] sendMessages() {
         // 최근 순으로 10개의 메시지를 조회
-        List<ChatEntity> chatEntities = chatRepository.findTop10ByOrderByIdDesc();
-
+        List<ChatEntity> chatEntities = chatRepository.findTop20ByOrderByIdDesc();
+        Collections.reverse(chatEntities);
         // ChatEntity 리스트를 ResChatMessageDto 배열로 변환
         ResChatMessageDto[] resChatMessageDtos = chatEntities.stream()
                 .map(chatEntity -> new ResChatMessageDto(chatEntity.getText(), chatEntity.getUsername()))

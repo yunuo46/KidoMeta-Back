@@ -9,6 +9,5 @@ import java.util.List;
 
 @Repository
 public interface ChatRepository extends JpaRepository<ChatEntity, Integer> {
-    @Query(value = "SELECT c FROM ChatEntity c ORDER BY c.id DESC")
-    List<ChatEntity> findTop10ByOrderByIdDesc();
+    List<ChatEntity> findTop20ByOrderByIdDesc();
 }
